@@ -1,4 +1,4 @@
-package pages;
+package bring_it_on.pages;
 
 import constants.RegistrationContent;
 import org.openqa.selenium.By;
@@ -18,16 +18,16 @@ public class HomePage {
 
     @FindBy(id = "postform-text")
     private WebElement codeContent;
+
     @FindBy(id = "select2-postform-format-container")
     private WebElement containerFormat;
-//    @FindBy(xpath = "//li[text()='Bash']")
-//    private WebElement format;
+
     @FindBy(id = "select2-postform-expiration-container")
     private WebElement containerExpiration;
-//    @FindBy(xpath = "//li[text()='10 Minutes']")
-//    private WebElement resultExpiration;
+
     @FindBy(id = "postform-name")
     private WebElement pasteName;
+
     @FindBy(xpath = "//div[@class='form-group form-btn-container']/button")
     private WebElement button;
 
@@ -55,10 +55,10 @@ public class HomePage {
         driver.findElement(By.xpath(buildLocator(locatorTemplate, content))).click();
     }
 
-    public pages.NewPaste createPastePage(){
+    public NewPaste createPastePage(){
         fillFields();
         button.click();
-        return new pages.NewPaste(driver);
+        return new NewPaste(driver);
 
     }
     private String buildLocator(String locatorTemplate, RegistrationContent content){

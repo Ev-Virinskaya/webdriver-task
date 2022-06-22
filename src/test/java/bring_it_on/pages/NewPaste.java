@@ -1,34 +1,33 @@
-package pages;
+package bring_it_on.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class NewPaste {
     private WebDriver driver;
+    private WebDriverWait wait;
 
-    @FindBy(tagName = "h1")
-    private WebElement titlePage;
-    @FindBy(xpath = "//div[@class='source']/ol/li")
-    private WebElement stringText;
-    @FindBy(xpath = "//div[@class='left']/a")
-    private WebElement syntax;
+    private String titlePageLocator = "h1";
+    private String textFieldLocator = "//div[@class='source']/ol/li";
+    private String formatLocator = "//div[@class='left']/a";
 
     public NewPaste(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public String getTitlePage(){
-        return titlePage.getText();
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName(titlePageLocator))).getText();
     }
 
-    public String getText(){
-        List<WebElement> text = stringText.findElements(By.xpath("//div[@class='source']/ol/li"));
+    public String getCodeText(){
+        List<WebElement> text = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(textFieldLocator)));
         StringBuilder builder = new StringBuilder();
         for (WebElement string : text) {
             builder.append(string.getText()).append("\n");
@@ -36,7 +35,7 @@ public class NewPaste {
         return builder.toString().trim();
     }
 
-    public String getSyntax(){
-        return syntax.getText();
+    public String getFormat(){
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(formatLocator))).getText();
     }
 }
