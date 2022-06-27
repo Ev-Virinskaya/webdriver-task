@@ -19,7 +19,7 @@ public class EmailPage extends AbstractPage {
 
     public String getEstimateCost() {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

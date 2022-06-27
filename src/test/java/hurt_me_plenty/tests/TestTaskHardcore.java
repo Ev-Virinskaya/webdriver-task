@@ -28,7 +28,7 @@ public class TestTaskHardcore {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         pageResult = new HomePageCloud(driver,wait).openPage().searchInfo().openCalculatorPage().switchCalcForm().fillFields();
         pageCost = pageResult.getData(ResultData.estimateCostLocator);
-        emailPage = pageResult.getEmailForm().getEmailPage();
+        emailPage = pageResult.getEmailForm().sendEmail().openEmailPage();
     }
 
     @Test
@@ -42,7 +42,7 @@ public class TestTaskHardcore {
 
     @AfterClass
     public void closeBrowser(){
-        //driver.quit();
-        //driver = null;
+        driver.quit();
+        driver = null;
     }
 }

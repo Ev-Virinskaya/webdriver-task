@@ -4,9 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CalculatorPage extends AbstractPage{
-    //private String iframeLocator = "//*[@id='cloud-site']//iframe";
-    //private String destinationIframeLocator = "//*[@id='myFrame']";
-
 
     public CalculatorPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);

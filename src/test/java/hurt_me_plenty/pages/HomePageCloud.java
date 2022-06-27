@@ -10,13 +10,12 @@ import java.time.Duration;
 
 public class HomePageCloud extends AbstractPage{
     private final String HOME_PAGE = "https://cloud.google.com/";
-    private String searchTerm;
+    private String searchRequest = "Google Cloud Platform Pricing Calculator";
     private String searchInput = "//input[@name='q']";
 
 
     public HomePageCloud(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
-        this.searchTerm = "Google Cloud Platform Pricing Calculator";
     }
 
     public HomePageCloud openPage() {
@@ -28,8 +27,8 @@ public class HomePageCloud extends AbstractPage{
     public SearchResultPage searchInfo() {
         WebElement element = driver.findElement(By.xpath(searchInput));
         element.click();
-        element.sendKeys(searchTerm, Keys.ENTER);
-        return new SearchResultPage(driver, wait, searchTerm);
+        element.sendKeys(searchRequest, Keys.ENTER);
+        return new SearchResultPage(driver, wait, searchRequest);
     }
 
 }
