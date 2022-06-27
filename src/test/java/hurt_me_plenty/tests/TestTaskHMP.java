@@ -65,7 +65,7 @@ public class TestTaskHMP {
 
     @AfterClass
     public void closeBrowser(){
-        driver.quit();
-        driver = null;
+        //driver.quit();
+        //driver = null;
     }
 }

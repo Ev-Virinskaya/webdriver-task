@@ -1,10 +1,8 @@
 package hurt_me_plenty.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 
 public class SearchResultPage extends AbstractPage{
     private final String locator;
@@ -16,7 +14,10 @@ public class SearchResultPage extends AbstractPage{
     }
 
     public CalculatorPage openCalculatorPage(){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator))).click();
+//        try {
+            wait.until(ExpectedConditions.elementToBeClickable(By.xpath(locator))).click();
+//        }catch (TimeoutException e){
+//          }
         return new CalculatorPage(driver, wait);
     }
 

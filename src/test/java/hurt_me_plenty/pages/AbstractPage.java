@@ -11,4 +11,12 @@ public abstract class AbstractPage {
         this.driver = driver;
         this.wait = wait;
     }
+
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public WebDriverWait getWait() {
+        return wait;
+    }
 }

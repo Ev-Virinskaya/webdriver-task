@@ -17,6 +17,11 @@ public class PageResult extends AbstractPage{
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator))).getText();
     }
 
+    public EmailForm getEmailForm (){
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='email_quote']"))).click();
+        return new EmailForm(driver,wait);
+    }
+
 
 
 }
