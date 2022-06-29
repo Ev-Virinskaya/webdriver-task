@@ -1,8 +1,8 @@
 package bring_it_on.tests;
 
 import bring_it_on.pages.HomePage;
-import bring_it_on.pages.NewPaste;
-import constants.RegistrationContent;
+import bring_it_on.pages.NewPastePage;
+import bring_it_on.constants.RegistrationContent;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -12,9 +12,9 @@ import org.testng.annotations.Test;
 
 
 
-public class TestPastePage {
+public class PastePageTest {
     private WebDriver driver;
-    private NewPaste pastePage;
+    private NewPastePage pastePage;
 
     @BeforeClass(alwaysRun = true)
     public void browserSetup() {

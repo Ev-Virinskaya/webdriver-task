@@ -11,7 +11,7 @@ public class WindowsSwitcher {
     private static String windowToSwitch;
 
 
-    public static WebDriver switchWindow(WebDriver driver){
+    public static WebDriver switchToWindow(WebDriver driver){
         currentWindow = driver.getWindowHandle();
         Set<String> currentWindows = driver.getWindowHandles();
         for (String window : currentWindows) {
@@ -26,6 +26,6 @@ public class WindowsSwitcher {
     public static WebDriver openNewWindow(WebDriver driver){
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("window.open()");
-        return switchWindow(driver);
+        return switchToWindow(driver);
     }
 }

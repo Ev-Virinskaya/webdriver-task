@@ -9,15 +9,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-public class NewPaste {
+public class NewPastePage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    private String titlePageLocator = "h1";
-    private String textFieldLocator = "//div[@class='source']/ol/li";
-    private String formatLocator = "//div[@class='left']/a";
+    private static final String titlePageLocator = "h1";
+    private static final String textFieldLocator = "//div[@class='source']/ol/li";
+    private static  final String formatLocator = "//div[@class='left']/a";
 
-    public NewPaste(WebDriver driver) {
+    public NewPastePage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }

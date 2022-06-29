@@ -1,4 +1,4 @@
-package constants;
+package bring_it_on.constants;
 
 public enum RegistrationContent {
     CODE_CONTENT("git config --global user.name  \"New Sheriff in Town\"\ngit reset $(git commit-tree HEAD^{tree} -m \"Legacy code\")\ngit push origin master --force"),

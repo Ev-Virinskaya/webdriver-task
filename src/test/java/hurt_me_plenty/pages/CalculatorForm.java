@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CalculatorForm extends AbstractPage {
-    private String locatorPattern = "//*[@id='select_container_%s']//*[contains(text(),'%s')]";
+    private static final String LOCATOR_PATTERN = "//*[@id='select_container_%s']//*[contains(text(),'%s')]";
 
 
     public CalculatorForm(WebDriver driver, WebDriverWait wait) {
@@ -45,10 +45,10 @@ public class CalculatorForm extends AbstractPage {
     @FindBy(xpath = "//*[@id='select_value_label_84']")
     private WebElement usageField;
     @FindBy(xpath = "//form[@name='ComputeEngineForm']//button[@aria-label='Add to Estimate']")
-    private WebElement button;
+    private WebElement addEstimateButton;
 
 
-    public PageResult fillFields() {
+    public ResultPage fillFields() {
         computeEngine.click();
         input.sendKeys(RegData.NUMBER_OF_INSTANCE);
         fillField(softwareField, PartIdSelectContainer.OS, RegData.OS_TYPE);
@@ -61,13 +61,13 @@ public class CalculatorForm extends AbstractPage {
         fillField(localSSDField, PartIdSelectContainer.LOCAL_SSD, RegData.LOCAL_SSD);
         fillField(regionField, PartIdSelectContainer.REGION, RegData.REGION);
         fillField(usageField, PartIdSelectContainer.USAGE, RegData.COMMITMENT_TERM);
-        button.click();
+        addEstimateButton.click();
 
-        return new PageResult(driver, wait);
+        return new ResultPage(driver, wait);
     }
 
     private String buildLocator(String idSelectContainer, String content) {
-        return String.format(locatorPattern, idSelectContainer, content);
+        return String.format(LOCATOR_PATTERN, idSelectContainer, content);
     }
 
     private void fillField(WebElement field, String partIdContainer, String content) {

@@ -9,8 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class EmailForm extends AbstractPage {
-    private final String emailInputLocator = "//input[@type='email']";
-    private final String emailButtonLocator = "//button[@aria-label='Send Email']";
+    private static final String EMAIL_INPUT_LOCATOR = "//input[@type='email']";
+    private static final String EMAIL_BUTTON_LOCATOR = "//button[@aria-label='Send Email']";
+
     private EmailGeneratorPage emailGeneratorPage;
 
     public EmailForm(WebDriver driver, WebDriverWait wait) {
@@ -26,10 +27,11 @@ public class EmailForm extends AbstractPage {
 
     public EmailGeneratorPage sendEmail(){
         String email = createEmail();
+        //вынести в абстрактный класс (есть такой же кусок на CalculatorPage)
         driver.switchTo().frame(0).switchTo().frame("myFrame");
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(emailInputLocator))).sendKeys(email);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(emailButtonLocator))).click();
-        WindowsSwitcher.switchWindow(driver);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAIL_INPUT_LOCATOR))).sendKeys(email);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(EMAIL_BUTTON_LOCATOR))).click();
+        WindowsSwitcher.switchToWindow(driver);
         return emailGeneratorPage;
     }
 }

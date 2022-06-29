@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PageResult extends AbstractPage{
-    private String mailButton = "//button[@id='email_quote']";
+public class ResultPage extends AbstractPage{
+    private static final String MAIL_BUTTON = "//button[@id='email_quote']";
 
-    public PageResult(WebDriver driver, WebDriverWait wait) {
+    public ResultPage(WebDriver driver, WebDriverWait wait) {
         super(driver,wait);
 
     }
@@ -18,7 +18,7 @@ public class PageResult extends AbstractPage{
     }
 
     public EmailForm getEmailForm (){
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(mailButton))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(MAIL_BUTTON))).click();
         return new EmailForm(driver,wait);
     }
 

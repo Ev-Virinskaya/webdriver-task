@@ -8,13 +8,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class EmailPage extends AbstractPage {
+    private static final String REFRESH_BUTTON = "//*[@id='refresh']";
+    private static final String FULL_IFRAME = "//iframe[@id='ifmail' and @state='full']";
+    private static final String ESTIMATE_COST = "//td[@colspan='3']/following-sibling::td/h3";
 
     public EmailPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     private void refreshEmailBox() {
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='refresh']"))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(REFRESH_BUTTON))).click();
     }
 
     public String getEstimateCost() {
@@ -24,10 +27,9 @@ public class EmailPage extends AbstractPage {
             e.printStackTrace();
         }
         refreshEmailBox();
-        WebElement iframeIfmail = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//iframe[@id='ifmail' and @state='full']")));
+        WebElement iframeIfmail = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(FULL_IFRAME)));
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframeIfmail));
-        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//td[@colspan='3']/following-sibling::td/h3")));
-        return element.getText();
+        return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(ESTIMATE_COST))).getText();
 
     }
 }

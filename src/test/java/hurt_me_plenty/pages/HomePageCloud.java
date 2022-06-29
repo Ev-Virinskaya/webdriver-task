@@ -9,9 +9,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class HomePageCloud extends AbstractPage{
-    private final String HOME_PAGE = "https://cloud.google.com/";
-    private String searchRequest = "Google Cloud Platform Pricing Calculator";
-    private String searchInput = "//input[@name='q']";
+    private static final String HOME_PAGE = "https://cloud.google.com/";
+    private static final String SEARCH_REQUEST = "Google Cloud Platform Pricing Calculator";
+    private static final String SEARCH_INPUT = "//input[@name='q']";
 
 
     public HomePageCloud(WebDriver driver, WebDriverWait wait) {
@@ -25,10 +25,10 @@ public class HomePageCloud extends AbstractPage{
     }
 
     public SearchResultPage searchInfo() {
-        WebElement element = driver.findElement(By.xpath(searchInput));
+        WebElement element = driver.findElement(By.xpath(SEARCH_INPUT));
         element.click();
-        element.sendKeys(searchRequest, Keys.ENTER);
-        return new SearchResultPage(driver, wait, searchRequest);
+        element.sendKeys(SEARCH_REQUEST, Keys.ENTER);
+        return new SearchResultPage(driver, wait, SEARCH_REQUEST);
     }
 
 }

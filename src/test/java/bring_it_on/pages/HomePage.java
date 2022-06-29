@@ -1,6 +1,6 @@
 package bring_it_on.pages;
 
-import constants.RegistrationContent;
+import bring_it_on.constants.RegistrationContent;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,10 +55,10 @@ public class HomePage {
         driver.findElement(By.xpath(buildLocator(locatorTemplate, content))).click();
     }
 
-    public NewPaste createPastePage(){
+    public NewPastePage createPastePage(){
         fillFields();
         button.click();
-        return new NewPaste(driver);
+        return new NewPastePage(driver);
 
     }
     private String buildLocator(String locatorTemplate, RegistrationContent content){
