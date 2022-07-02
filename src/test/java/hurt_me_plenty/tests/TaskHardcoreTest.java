@@ -1,6 +1,5 @@
 package hurt_me_plenty.tests;
 
-import hurt_me_plenty.content.ResultData;
 import hurt_me_plenty.pages.EmailPage;
 import hurt_me_plenty.pages.HomePageCloud;
 import hurt_me_plenty.pages.ResultPage;
@@ -27,7 +26,7 @@ public class TaskHardcoreTest {
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         resultPage = new HomePageCloud(driver,wait).openPage().searchInfo().openCalculatorPage().switchCalcForm().fillFields();
-        pageCost = resultPage.getData(ResultData.ESTIMATE_COST_LOCATOR);
+        pageCost = resultPage.getEstimateCostData();
         emailPage = resultPage.getEmailForm().sendEmail().openEmailPage();
     }
 

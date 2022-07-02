@@ -1,7 +1,6 @@
 package hurt_me_plenty.tests;
 
 import hurt_me_plenty.content.RegData;
-import hurt_me_plenty.content.ResultData;
 import hurt_me_plenty.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -28,37 +27,37 @@ public class TaskHMPTest {
     @Test
     public void shouldCreateInstanceWithVMClassContainsRegistrationData(){
         String regDataVMClass = RegData.VM_CLASS;
-        String actualVMClass = resultPage.getData(ResultData.VM_CLASS_LOCATOR);
+        String actualVMClass = resultPage.getVmClassData();
         Assert.assertTrue(actualVMClass.contains(regDataVMClass));
     }
     @Test
     public void shouldCreateInstanceWithTypeContainsRegistrationData(){
         String regDataInstanceType = RegData.INSTANCE_TYPE;
-        String actualInstanceType = resultPage.getData(ResultData.INSTANCE_TYPE_LOCATOR);
+        String actualInstanceType = resultPage.getInstanceTypeData();
         Assert.assertTrue(actualInstanceType.contains(regDataInstanceType));
     }
     @Test
     public void shouldCreateInstanceWithRegionContainsRegistrationData(){
         String regDataRegion = RegData.REGION;
-        String actualRegion = resultPage.getData(ResultData.REGION_LOCATOR);
+        String actualRegion = resultPage.getRegionData();
         Assert.assertTrue(actualRegion.contains(regDataRegion));
     }
     @Test
     public void shouldCreateInstanceWithLocalSSDContainsRegistrationData(){
         String regDataLocalSSD = RegData.LOCAL_SSD;
-        String actualLocalSSD = resultPage.getData(ResultData.LOCAL_SSD_LOCATOR);
+        String actualLocalSSD = resultPage.getLocalSsdData();
         Assert.assertTrue(actualLocalSSD.contains(regDataLocalSSD));
     }
     @Test
     public void shouldCreateInstanceWithCommitmentTermContainsRegistrationData(){
         String regDataCommitmentTerm = RegData.COMMITMENT_TERM;
-        String actualCommitmentTerm = resultPage.getData(ResultData.COMMITMENT_TERM_LOCATOR);
+        String actualCommitmentTerm = resultPage.getCommitmentTermData();
         Assert.assertTrue(actualCommitmentTerm.contains(regDataCommitmentTerm));
     }
     @Test
     public void shouldCreateInstanceWithEstimatedCostEquals(){
         String expectedEstimatedCost = "4,024.56";
-        String actualEstimatedCost = resultPage.getData(ResultData.ESTIMATE_COST_LOCATOR);
+        String actualEstimatedCost = resultPage.getEstimateCostData();
         Assert.assertTrue(actualEstimatedCost.contains(expectedEstimatedCost));
 
     }

@@ -11,7 +11,7 @@ public class CalculatorPage extends AbstractPage{
     }
 
     public CalculatorForm switchCalcForm(){
-        driver.switchTo().frame(0).switchTo().frame("myFrame");
+        switchToIframe();
         return new CalculatorForm(driver, wait);
     }
 

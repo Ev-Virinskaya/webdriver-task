@@ -1,6 +1,4 @@
 package hurt_me_plenty.pages;
-
-import hurt_me_plenty.WindowsSwitcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +17,7 @@ public class EmailForm extends AbstractPage {
     }
 
     private String createEmail(){
-        driver = WindowsSwitcher.openNewWindow(driver);
+        driver = openNewWindow();
         emailGeneratorPage = new EmailGeneratorPage(driver,wait);
         return emailGeneratorPage.generateEmailAddress();
     }
@@ -27,11 +25,10 @@ public class EmailForm extends AbstractPage {
 
     public EmailGeneratorPage sendEmail(){
         String email = createEmail();
-        //вынести в абстрактный класс (есть такой же кусок на CalculatorPage)
-        driver.switchTo().frame(0).switchTo().frame("myFrame");
+        switchToIframe();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAIL_INPUT_LOCATOR))).sendKeys(email);
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(EMAIL_BUTTON_LOCATOR))).click();
-        WindowsSwitcher.switchToWindow(driver);
+        switchToWindow();
         return emailGeneratorPage;
     }
 }

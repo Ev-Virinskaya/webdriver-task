@@ -20,7 +20,7 @@ public class HomePageCloud extends AbstractPage{
 
     public HomePageCloud openPage() {
         driver.get(HOME_PAGE);
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
         return this;
     }
 

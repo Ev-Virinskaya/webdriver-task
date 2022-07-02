@@ -1,6 +1,5 @@
 package hurt_me_plenty.pages;
 
-import hurt_me_plenty.WindowsSwitcher;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,7 +20,7 @@ public class EmailGeneratorPage extends AbstractPage {
     public String generateEmailAddress() {
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath(EMAIL_GENERATOR_BUTTON))).click();
         String email = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(EMAIL_ADDRESS_FIELD))).getText();
-        driver = WindowsSwitcher.switchToWindow(driver);
+        driver = switchToWindow();
         return email;
     }
 

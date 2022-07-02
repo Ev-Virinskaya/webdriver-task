@@ -1,7 +1,6 @@
 package hurt_me_plenty.pages;
 
 import hurt_me_plenty.content.RegData;
-import hurt_me_plenty.content.PartIdSelectContainer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +11,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CalculatorForm extends AbstractPage {
     private static final String LOCATOR_PATTERN = "//*[@id='select_container_%s']//*[contains(text(),'%s')]";
+
+    public static final String OS_PART_ID = "99";
+
+    public static final String VM_CLASS_PART_ID = "103";
+
+    public static final String SERIES_PART_ID = "111";
+
+    public static final String INSTANCE_TYPE_PART_ID = "113";
+
+    public static final String GPU_TYPE_PART_ID = "457";
+
+    public static final String NUMBER_OF_GPU_PART_ID = "459";
+
+    public static final String LOCAL_SSD_PART_ID = "414";
+
+    public static final String REGION_PART_ID = "119";
+
+    public static final String USAGE_PART_ID = "126";
 
 
     public CalculatorForm(WebDriver driver, WebDriverWait wait) {
@@ -51,16 +68,16 @@ public class CalculatorForm extends AbstractPage {
     public ResultPage fillFields() {
         computeEngine.click();
         input.sendKeys(RegData.NUMBER_OF_INSTANCE);
-        fillField(softwareField, PartIdSelectContainer.OS, RegData.OS_TYPE);
-        fillField(VMClassField, PartIdSelectContainer.VM_CLASS, RegData.VM_CLASS);
-        fillField(seriesField, PartIdSelectContainer.SERIES, RegData.SERIES);
-        fillField(instanceType, PartIdSelectContainer.INSTANCE_TYPE, RegData.INSTANCE_TYPE);
+        fillField(softwareField, OS_PART_ID, RegData.OS_TYPE);
+        fillField(VMClassField, VM_CLASS_PART_ID, RegData.VM_CLASS);
+        fillField(seriesField, SERIES_PART_ID, RegData.SERIES);
+        fillField(instanceType, INSTANCE_TYPE_PART_ID, RegData.INSTANCE_TYPE);
         wait.until(ExpectedConditions.elementToBeClickable(addGPUCheckbox)).click();
-        fillField(GPUTypeField, PartIdSelectContainer.GPU_TYPE, RegData.GPU_TYPE);
-        fillField(numberOfGPUField, PartIdSelectContainer.NUMBER_OF_GPU, RegData.GPU_NUMBER);
-        fillField(localSSDField, PartIdSelectContainer.LOCAL_SSD, RegData.LOCAL_SSD);
-        fillField(regionField, PartIdSelectContainer.REGION, RegData.REGION);
-        fillField(usageField, PartIdSelectContainer.USAGE, RegData.COMMITMENT_TERM);
+        fillField(GPUTypeField, GPU_TYPE_PART_ID, RegData.GPU_TYPE);
+        fillField(numberOfGPUField, NUMBER_OF_GPU_PART_ID, RegData.GPU_NUMBER);
+        fillField(localSSDField, LOCAL_SSD_PART_ID, RegData.LOCAL_SSD);
+        fillField(regionField, REGION_PART_ID, RegData.REGION);
+        fillField(usageField, USAGE_PART_ID, RegData.COMMITMENT_TERM);
         addEstimateButton.click();
 
         return new ResultPage(driver, wait);
